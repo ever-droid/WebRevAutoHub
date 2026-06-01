@@ -1,0 +1,78 @@
+HELP.md
+
+# Maven
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Build files
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Application secrets and environment files
+.env
+*.env
+
+# Spring Boot configuration containing credentials
+src/main/resources/application.properties
+src/main/resources/application.yml
+src/main/resources/application-dev.properties
+src/main/resources/application-prod.properties
+src/main/resources/application-local.properties
+
+# Logs
+*.log
+logs/
+
+# STS (Spring Tool Suite)
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Java
+*.class
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Archives
+*.zip
+*.tar
+*.gz
+*.rar
+
+# Node modules (if you later add React frontend)
+node_modules/
+
+# Frontend build folders
+dist/
+coverage/
