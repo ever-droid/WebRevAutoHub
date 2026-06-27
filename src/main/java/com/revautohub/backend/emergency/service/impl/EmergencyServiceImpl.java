@@ -52,13 +52,15 @@ public class EmergencyServiceImpl implements EmergencyService {
     }
 
     @Override
-    public EmergencyResponseDTO assignMechanic(Long emergencyId, AssignMechanicDTO assignMechanicDTO) {
+    public EmergencyResponseDTO assignMechanic(Long id, AssignMechanicDTO assignMechanicDTO) {
 
-        EmergencyRequest emergencyRequest = emergencyRepository.findById(emergencyId)
-                .orElseThrow(() -> new RuntimeException("Emergency request not found"));
+        EmergencyRequest emergencyRequest =
+                emergencyRepository.findById(id)
+                        .orElseThrow(() -> new RuntimeException("Emergency request not found"));
 
-        Mechanic mechanic = mechanicRepository.findById(assignMechanicDTO.getMechanicId())
-                .orElseThrow(() -> new RuntimeException("Mechanic not found"));
+        Mechanic mechanic =
+                mechanicRepository.findById(assignMechanicDTO.getMechanicId())
+                        .orElseThrow(() -> new RuntimeException("Mechanic not found"));
 
         emergencyRequest.setAssignedMechanicId(mechanic.getId());
         emergencyRequest.setAssignedMechanicName(mechanic.getFullName());
@@ -66,10 +68,8 @@ public class EmergencyServiceImpl implements EmergencyService {
         emergencyRequest.setAssignedMechanicLocation(mechanic.getLocation());
         emergencyRequest.setStatus("ASSIGNED");
 
-        mechanic.setAvailabilityStatus("UNAVAILABLE");
-
-        mechanicRepository.save(mechanic);
-        EmergencyRequest savedRequest = emergencyRepository.save(emergencyRequest);
+        EmergencyRequest savedRequest =
+                emergencyRepository.save(emergencyRequest);
 
         return mapToResponseDTO(savedRequest);
     }
